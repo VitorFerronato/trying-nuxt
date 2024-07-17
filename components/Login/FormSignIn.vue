@@ -1,19 +1,24 @@
 <template >
-  <v-form @submit.prevent class="d-flex flex-column ga-2">
-    <Prd-Text-Field v-model="email" :title="'Email'" />
+  <v-form ref="form" @submit.prevent class="d-flex flex-column ga-2">
+    <Prd-Text-Field
+      v-model="email"
+      :rules="[rulesEmail, rulesRequired]"
+      :title="'Email'"
+    />
 
-    <Prd-Text-Field v-model="password" :title="'Senha'" />
+    <Prd-Text-Field
+      v-model="password"
+      :rules="[rulesRequired]"
+      :title="'Senha'"
+    />
 
     <v-row no-gutters justify="space-between" align="center">
-      <v-checkbox
+      <Prd-Checkbox
         v-model="rememberPassword"
-        label="Lembrar Senha"
-        density="compact"
-        color="#3c5ca7"
-        hide-details
-        center-affix
-        class="ma-0 pa-0 ml-n1"
-      ></v-checkbox>
+        :label="'Lembrar Senha'"
+        class="ml-n1"
+      />
+
       <p
         @click="$emit('handlePasswordRecovery')"
         class="forgot-password text-subtitle-2 prd-txt-color-primary cursor-pointer"
@@ -23,7 +28,7 @@
     </v-row>
 
     <div class="d-flex align-center justify-center mt-4 mb-10">
-      <Prd-Button :title="'Entrar'" @click="login" />
+      <Prd-Button :title="'Entrar'" @click="validateForm" submit />
     </div>
   </v-form>
 </template>
@@ -31,13 +36,30 @@
 <script setup>
 import { useUserStore } from "@/stores/userStore.js";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 const router = useRouter();
-const store = useUserStore();
+const Store = useUserStore();
+
+const form = ref(null);
+const validateForm = async () => {
+  if (form.value) {
+    const { valid } = await form.value.validate();
+
+    if (valid) {
+      login();
+    }
+  }
+};
 
 const email = ref(null);
 const password = ref(null);
 const rememberPassword = ref(false);
 const login = () => {
+  let userData = {
+    email: email.value,
+    token: "sisushgsgy4744",
+  };
+  Store.setUserData(userData);
   router.push("/");
 };
 </script>

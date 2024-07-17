@@ -5,7 +5,7 @@
       v-bind="$attrs"
       variant="outlined"
       density="compact"
-      hide-details
+      hide-details="auto"
       class="mt-1"
     ></v-text-field>
   </div>
