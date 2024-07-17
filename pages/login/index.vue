@@ -10,12 +10,13 @@
 definePageMeta({
   layout: "",
 });
+useHead({
+  title: "PREDIFY | LOGIN",
+});
 </script>
 
 <style lang="scss" scoped>
 .login-main {
   height: 100vh;
-
-
 }
 </style>

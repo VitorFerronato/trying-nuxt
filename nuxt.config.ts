@@ -1,15 +1,17 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  css: ["vuetify/styles/main.sass"],
+  css: [
+    "vuetify/styles/main.sass",
+    "~/styles/_colors.scss",
+    "~/styles/_fonts.scss",
+  ],
   build: {
     transpile: ['vuetify'],
-
   },
-
   modules: [
     '@pinia/nuxt',
     (_options, nuxt) => {
@@ -18,9 +20,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-
   ],
-  
   vite: {
     vue: {
       template: {

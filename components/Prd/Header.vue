@@ -4,10 +4,10 @@
     token {{ store.token }}
     <br />
     email {{ store.email }}
-    <div>
-      <v-icon>mdi-plus-box</v-icon>
-      <v-icon>mdi-plus-box</v-icon>
-      <v-icon>mdi-plus-box</v-icon>
+    <div class="mr-4">
+      <NuxtLink to="/login/sign-out">
+        <v-icon>mdi-logout</v-icon>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -15,8 +15,4 @@
 <script setup>
 import { useUserStore } from "@/stores/userStore.js";
 const store = useUserStore();
-
-onMounted(() => {
-  console.log(store.$state);
-});
 </script>

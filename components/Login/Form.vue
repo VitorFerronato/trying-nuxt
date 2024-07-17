@@ -1,24 +1,34 @@
 <template>
-  <div class="flex-1-0 position-relative">
-    token {{ store.token }}
-    <br />
-    email {{ store.email }}
-    <v-form
-      @submit.prevent
-      class="login-inputs position-absolute d-flex flex-column ga-2"
-    >
-      <div>
-        <label>E-mail</label>
-        <v-text-field v-model="email"></v-text-field>
-      </div>
+  <div class="bg-width position-relative">
+    <div class="login-inputs position-absolute">
+      <Login-Title-Img />
 
-      <div>
-        <label>Senha</label>
-        <v-text-field v-model="password"></v-text-field>
-      </div>
+      <v-form @submit.prevent class="d-flex flex-column ga-2">
+        <Prd-Text-Field v-model="email" :title="'Email'" />
 
-      <v-btn @click="login" color="primary">Login</v-btn>
-    </v-form>
+        <Prd-Text-Field v-model="password" :title="'Senha'" />
+
+        <v-row no-gutters justify="space-between" align="center">
+          <v-checkbox
+            label="Lembrar Senha"
+            density="compact"
+            color="#3c5ca7"
+            hide-details
+            center-affix
+            class="ma-0 pa-0 ml-n1"
+          ></v-checkbox>
+          <span class="text-subtitle-2 prd-txt-color-primary">
+            Esqueci minha senha
+          </span>
+        </v-row>
+
+        <div class="d-flex align-center justify-center mt-4 mb-10">
+          <Prd-Button :title="'Entrar'" @click="login" />
+        </div>
+      </v-form>
+
+      <Login-Terms-Politics />
+    </div>
   </div>
 </template>
 
@@ -32,20 +42,23 @@ const email = ref(null);
 const password = ref(null);
 const login = () => {
   let userData = {
-    token: "adsujdais2332iilkkisuyja",
-    email: email,
+    password: password.value,
+    email: email.value,
   };
-
-  store.setUserData(userData);
-  router.push("/");
+  console.log(userData);
+  // store.setUserData(userData);
+  // router.push("/");
 };
 </script>
 
 <style lang="scss" scoped>
 .login-inputs {
-  width: 400px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.bg-width {
+  width: 40%;
 }
 </style>
