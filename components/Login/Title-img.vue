@@ -6,6 +6,6 @@
       class="ma-auto mb-10"
     >
     </v-img>
-    <h3 class="text-primary-color" style="color: #3c5ca7">LOG IN</h3>
+    <!-- <h3 class="prd-txt-color-primary">LOG IN</h3> -->
   </div>
 </template>
