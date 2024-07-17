@@ -2,16 +2,16 @@
   <div class="login-main d-flex">
     <Login-Background />
 
-    <Login-Form />
+    <Login-Sign-In />
   </div>
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "",
-});
 useHead({
   title: "PREDIFY | LOGIN",
+});
+definePageMeta({
+  layout: "",
 });
 </script>
 
