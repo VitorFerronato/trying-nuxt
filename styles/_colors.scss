@@ -1,8 +1,17 @@
 $brand-color-primary-pure: #3c5ca7;
 $brand-color-primary-dark: #1E3363;
+$very-light-gray: #f6f6f6;
 
 .prd-txt-color-primary {
     color: $brand-color-primary-pure;
+}
+
+.prd-bg-color-primary {
+    background-color: $brand-color-primary-pure;
+}
+
+.prd-bg-very-light-gray {
+    background-color: $very-light-gray
 }
 
 .prd-bg-color-primary-dark {

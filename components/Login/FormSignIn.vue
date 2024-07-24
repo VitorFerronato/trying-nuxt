@@ -10,6 +10,9 @@
       v-model="password"
       :rules="[rulesRequired]"
       :title="'Senha'"
+      :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+      :type="showPassword ? 'text' : 'password'"
+      @click:append-inner="showPassword = !showPassword"
     />
 
     <v-row no-gutters justify="space-between" align="center">
@@ -40,6 +43,8 @@ import { ref } from "vue";
 const router = useRouter();
 const Store = useUserStore();
 
+const showPassword = ref(false);
+
 const form = ref(null);
 const validateForm = async () => {
   if (form.value) {
@@ -57,6 +62,7 @@ const rememberPassword = ref(false);
 const login = () => {
   let userData = {
     email: email.value,
+    rememberPassword: rememberPassword.value,
     token: "sisushgsgy4744",
   };
   Store.setUserData(userData);
